@@ -6,6 +6,7 @@ Feature: Navigation Menu
     When the user navigates to fleet, vehicles
     Then the title should be Vehicles
 
+  @db
   Scenario: Navigating  Marketing  -- Campaigns
     Given the user is on the login page
     And the user enters the sales manager information
