@@ -50,7 +50,7 @@ public class NavigationMenuStepDefs {
 
     @Then("default page number should be {int}")
     public void default_page_number_should_be(Integer expectedPageNum) {
-        BrowserUtils.waitFor(8);
+        BrowserUtils.waitFor(5);
         ContactsPage contactsPage = new ContactsPage();
         Integer actualNumber = Integer.parseInt(contactsPage.pageNumber.getAttribute("value"));
         Assert.assertEquals(expectedPageNum,actualNumber);

@@ -16,7 +16,9 @@ public class LoginStepDefs {
     public void the_user_is_on_the_login_page() throws InterruptedException {
         String url = ConfigurationReader.get("url");
         //WebDriver driver = Driver.get();
+
         Driver.get().get(url);
+
 
     }
 
@@ -31,7 +33,7 @@ public class LoginStepDefs {
 
     @Then("the user should be able to login")
     public void the_user_should_be_able_to_login() throws InterruptedException {
-        BrowserUtils.waitFor(3);
+        BrowserUtils.waitFor(5);
         String actualTitle = Driver.get().getTitle();
         Assert.assertEquals("Dashboard",actualTitle);
 
@@ -74,6 +76,35 @@ public class LoginStepDefs {
 
     }
 
+    @Given("the user logged  in as {string}")
+    public void the_user_logged_in_as(String str) {
+
+        String url = ConfigurationReader.get("url");
+           Driver.get().get(url);
+
+             String username="";
+             String password="";
+
+
+       if(str.contains("driver")){
+            username = ConfigurationReader.get("driver_username");
+            password = ConfigurationReader.get("driver_password");
+
+
+       }else if (str.contains("sales")){
+            username = ConfigurationReader.get("sales_manager_username");
+            password = ConfigurationReader.get("sales_manager_password");;
+
+
+        }else if (str.contains("store")){
+            username = ConfigurationReader.get("store_manager_username");
+            password = ConfigurationReader.get("store_manager_password");
+
+
+       }
+        new LoginPage().login(username,password);
+
+    }
 
 
 
